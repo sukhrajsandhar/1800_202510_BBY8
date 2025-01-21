@@ -58,7 +58,6 @@ project-name/
 ---
 
 ## Contributors
-
 - Sukhraj Sandhar - BCIT CST Student with a passionate about technology and software development, eager to explore coding and programming while building skills for the tech industry.
 
 - Hi, my name is Sydney! I'm excited to start this project yay!
