@@ -58,7 +58,7 @@ project-name/
 ---
 
 ## Contributors
-- **Your Name** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
+- Sukhraj Sandhar - BCIT CST Student with a passionate about technology and software development, eager to explore coding and programming while building skills for the tech industry.
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
