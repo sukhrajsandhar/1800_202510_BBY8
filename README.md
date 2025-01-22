@@ -64,7 +64,6 @@ project-name/
 
 - Hi, my name is Sydney! I'm excited to start this project yay!
 
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 - Wonjun Jung - IVE PLAYED THESE GAMES BEFORE!!!!!!!!!!!!
 ---
 
