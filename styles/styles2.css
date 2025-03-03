@@ -29,14 +29,8 @@ body {
   color: var(--dark-color);
 }
 
-.map-container {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background-image: url(/images/stockmap.jpg);
-  background-size: cover;
-  background-position: center;
-}
+#map { position: absolute; top: 0; bottom: 0%; width: 100%; }
+
 
 .search-container {
   position: absolute;
