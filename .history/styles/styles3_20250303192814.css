@@ -1,6 +1,8 @@
 /* Stylesheet for Profile.html */
 
-
+body {
+    background-color: #f4f7f6;
+}
 
 .card {
     border-radius: 10px;
