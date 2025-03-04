@@ -18,61 +18,43 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title fs-5" id="exampleModalLabel">New Report Form</h4>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New Report Form</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!--location, time, checkbox problem type-->
                     <form>
                         <div class="mb-3">
-                            <label for="report-title-name" class="col-form-label"><h6><b>Report Title:</b></h6></label>
+                            <label for="report-title-name" class="col-form-label">Report Title:</label>
                             <input type="text" class="form-control" id="report-title-name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="location-name" class="col-form-label"><h6><b>Location:</b></h6></label>
+                            <label for="location-name" class="col-form-label">Location:</label>
                             <input type="text" class="form-control" id="location-name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="start"><h6><b>Date:</b></h6></label>
-                            <input type="date-problem" id="start" name="new-report-start" value="yyyy-mm-dd" min="2025-01-01" max="2025-12-31" />
-                            <label for="time-problem"><h6><b>Time:</b></h6></label>
-                            <input type="time" id="time" name="time-new-report-form" min="00:00" max="23:59" required />
+                            <label for="date-and-time" class="col-form-label">Date and Time:</label>
+                            <input type="text" class="form-control" id="date-and-time" required>
                         </div>
-                        <div>
-                            <fieldset>
-                                <label for="road-problem-checkbox"><h6><b>Select Road Problem Type:</b></h6></label>
-                                <div>
-                                    <input type="checkbox" id="Construction" name="Construction"/>
-                                    <label for="Construction">Construction</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="Hazard" name="Hazard" />
-                                    <label for="Hazard">Hazard</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="Police" name="Police" />
-                                    <label for="Police">Police</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="Crash" name="Crash" />
-                                    <label for="Crash">Crash</label>
-                                </div>
-                            </fieldset>
-                            <br>
-                        </div>
+
+                        <label for="start">Date:</label>
+                        <input type="date" id="start" name="trip-start" value="yyyy-mm-dd" min="2018-01-01" max="2018-12-31" />
+
+
+
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label"><h6><b>Problem Summary:</b></h6></label>
+                            <label for="message-text" class="col-form-label">Problem Summary:</label>
                             <textarea class="form-control" id="message-text"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary">Submit Report</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- map container -->
     <div id="map">
         <!-- Search bar and Report button -->
@@ -83,6 +65,7 @@
             </div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
                 <i class="material-icons">flag</i>
+                New Report Form
             </button>
                 
         
