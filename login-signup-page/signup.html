@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Sign Up - StreetSmart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="module" src="/scripts/firebaseAPI_TEAM08.js" defer></script>
+  </head>
+  <body>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center"></div>
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="wrap d-md-flex">
+              <div class="img" style="background-image: url(/images/streetsmartplaceholderimage.png);"></div>
+              <div class="login-wrap p-4 p-md-5">
+                <div class="d-flex">
+                  <div class="w-100">
+                    <h3 class="mb-4">Welcome to StreetSmart!</h3>
+                  </div>
+                </div>
+                <form action="#" class="signup-form">
+                  <div class="form-group mb-3">
+                    <label class="label" for="fName">First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" id="fName" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="lName">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" id="lName" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="rEmail">Email</label>
+                    <input type="email" class="form-control" placeholder="Email" id="rEmail" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="rPassword">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" id="rPassword" required>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" id="submitSignUp" class="form-control btn btn-primary rounded submit px-3">Sign Up</button>
+                  </div>
+                  <div id="signUpMessage" class="alert alert-info" style="display: none;"></div>
+                </form>
+                <p class="text-center">Already a member? <a href="login.html">Sign In</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
