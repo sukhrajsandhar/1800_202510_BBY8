@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreetSmart - Report an Issue</title>
+    <title>StreetSmart - Reports</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -11,121 +11,120 @@
     <link rel="stylesheet" href="/styles/styles2.css">
 </head>
 <body>
-    <h1>Reports List</h1>
     <div id="reports-scroll-page" class="scrollable-container-reports">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item" aria-current="true">
-                <div class="container1">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-cone-striped"> Construction  </i>
-                    </button>
-                    <small class="text-body-secondary">7 minutes ago</small>
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Header -->
+                    <div class="text-center mb-4">
+                        <h1 class="h2 m-0">Reports List</h1>
+                    </div>
+
+                    <!-- Reports List -->
+                    <div class="list-group">
+                        <div class="report-card">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-warning text-dark">
+                                    <i class="bi bi-cone-striped"></i> Construction
+                                </span>
+                                <small class="text-muted">7 minutes ago</small>
+                            </div>
+                            <h5 class="mb-2">Construction on E 29th ave and Willingdon Street</h5>
+                            <p class="text-muted mb-0">
+                                <i class="bi bi-clock-history"></i>
+                                Last update: 2/17/2025 5:23pm - Road crews are filling in potholes and making road repairs.
+                            </p>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-danger">
+                                    <i class="bi bi-exclamation-triangle"></i> Hazard
+                                </span>
+                                <small class="text-muted">23 minutes ago</small>
+                            </div>
+                            <h5 class="mb-2">Hazard on Willingdon and Kingsway</h5>
+                            <p class="text-muted mb-0">
+                                <i class="bi bi-clock-history"></i>
+                                Last update: 2/17/2025 5:00pm - Road crews are currently working on resolving the issue.
+                            </p>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-danger">
+                                    <i class="bi bi-x-circle"></i> Road Closure
+                                </span>
+                                <small class="text-muted">53 minutes ago</small>
+                            </div>
+                            <h5 class="mb-2">Road Closure on Dawson Street</h5>
+                            <p class="text-muted mb-0">
+                                <i class="bi bi-clock-history"></i>
+                                Last update: 2/17/2025 4:30pm - Road crews are currently working on resolving the issue.
+                            </p>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-info">
+                                    <i class="bi bi-shield"></i> Police
+                                </span>
+                                <small class="text-muted">3 hours ago</small>
+                            </div>
+                            <h5 class="mb-2">Police Activity on E 29th Ave</h5>
+                            <p class="text-muted mb-0">
+                                <i class="bi bi-clock-history"></i>
+                                Last update: 2/17/2025 2:53pm - Police activity investigating. No harm to public safety.
+                            </p>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-warning text-dark">
+                                    <i class="bi bi-stoplights"></i> Traffic
+                                </span>
+                                <small class="text-muted">4 days ago</small>
+                            </div>
+                            <h5 class="mb-2">Traffic on Gilmore Way</h5>
+                            <p class="text-muted mb-0">
+                                <i class="bi bi-clock-history"></i>
+                                Last update: 2/13/2025 5:42pm - Heavy traffic. Expect delays.
+                            </p>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-danger">
+                                    <i class="bi bi-car-front"></i> Car Crash
+                                </span>
+                                <small class="text-muted">14 days ago</small>
+                            </div>
+                            <h5 class="mb-2">Crash on Gilpin Street</h5>
+                            <p class="text-muted mb-0">
+                                <i class="bi bi-clock-history"></i>
+                                Last update: 2/03/2025 9:53am - Severe crash on Gilpin Street. Expect major delays.
+                            </p>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-info">
+                                    <i class="bi bi-droplet"></i> Flooding
+                                </span>
+                                <small class="text-muted">16 days ago</small>
+                            </div>
+                            <h5 class="mb-2">Flooding on Sanderson Way</h5>
+                            <p class="text-muted mb-0">
+                                <i class="bi bi-clock-history"></i>
+                                Last update: 2/01/2025 11:34am - City crews working to fix flooding. Find alternate routes.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <p class="mb-1">Construction on E 29th ave and Willingdon Street.</p>
-                <small class="text-body-secondary">Last update: 2/17/2025 5:23pm - Road crews are filling in potholes and making road repairs.</small>
-                </div>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-exclamation-triangle"> Hazard  </i>
-                    </button>
-                    <small class="text-body-secondary">23 minutes ago</small>
-                </div>
-                <p class="mb-1">Hazard on willingdon and Kingsway</p>
-                <small class="text-body-secondary">Last update: 2/17/2025 5:00pm - Road crews are currently working on resolving the issue.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="container1">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-x-circle"> Road Closure </i>
-                    </button>
-                    <small class="text-body-secondary">53 minutes ago</small>
-                </div>
-                <p class="mb-1"> Road Closure on Dawson Street</p>
-                <small class="text-body-secondary">Last update: 2/17/2025 4:30pm - Road crews are currently working on resolving the issue.</small>
-                </div>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-lightbulb"> Police</i>
-                    </button>
-                    <small class="text-body-secondary"> 3 hours ago</small>
-                </div>
-                <p class="mb-1">Construction on E 29th ave and Willingdon Street.</p>
-                <small class="text-body-secondary">Last update: 2/17/2025 2:53pm - Police activity investigating. No harm to public safety.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="container1">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-stoplights"> Traffic </i>
-                    </button>
-                    <small class="text-body-secondary"> 4 days ago </small>
-                </div>
-                <p class="mb-1"> Traffic on Gilmore way</p>
-                <small class="text-body-secondary">Last update: 2/13/2025 5:42pm - Heavy traffic. Expect delays. </small>
-                </div>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-car-front"> Car Crash</i>
-                    </button>
-                    <small class="text-body-secondary"> 14 days ago</small>
-                </div>
-                <p class="mb-1"> Crash on Gilpin Street </p>
-                <small class="text-body-secondary">Last update: 2/03/2025 9:53am - Severe crash on Gilpin Street. Expect major delays.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="container1">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-droplet"> Flooding</i>
-                    </button>
-                    <small class="text-body-secondary"> 16 days ago</small>
-                </div>
-                <p class="mb-1"> Flooding on Sanderson Way</p>
-            <small class="text-body-secondary">Last update: 2/01/2025 11:34am - City crews working to fix flooding. Find alternate routes.</small>
             </div>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-snow"> Snowy conditions</i>
-                    </button>
-                    <small class="text-body-secondary"> 24 days ago</small>
-                </div>
-                <p class="mb-1"> Snowing on Smith Street</p>
-                <small class="text-body-secondary">Last update: 1/24/2025 2:17pm - Snowy conditions. Lower speed.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="container1">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-car-front"> Car Crash</i>
-                    </button>
-                    <small class="text-body-secondary"> 1 month ago</small>
-                </div>
-                <p class="mb-1"> Car Crash on Curtis street</p>
-                <small class="text-body-secondary">Last update: 1/12/2025 1:03pm - Car crash. Expect delays.</small>
-                </div>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <button>
-                        <i class="bi bi-x-circle"> Road Closure </i>
-                    </button>
-                    <small class="text-body-secondary"> 2 month ago</small>
-                </div>
-                <p class="mb-1"> Car Crash on Curtis street</p>
-                <small class="text-body-secondary">Last update: 12/22/2024 7:15am - Road closure due to weather conditions. Find alternative routes.</small>
-            </a>
         </div>
     </div>
+
     <!-- Nav bar -->
     <nav class="bottom-nav">
         <a href="Reports.html" class="nav-item active">
