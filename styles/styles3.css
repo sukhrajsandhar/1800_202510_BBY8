@@ -1,5 +1,14 @@
 /* Stylesheet for Profile.html */
 
+.profile-page-title {
+    margin-top: 5%;
+    margin-bottom: 7%;
+    margin-left: 35%;
+}
+
+#profile-picture {
+    border-radius: 100%;
+}
 
 
 .card {
