@@ -1,18 +1,10 @@
-// Import Firebase v8 modules correctly
+// Import Firebase modules
 import "https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js";
 import "https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js";
 import "https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js";
 
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDusEPSeKh9n2I4KCw5cI3CLg1MDUE3Rsk",
-  authDomain: "streetsmartbcit.firebaseapp.com",
-  projectId: "streetsmartbcit",
-  storageBucket: "streetsmartbcit.appspot.com",
-  messagingSenderId: "986336052202",
-  appId: "1:986336052202:web:f1d93cdc86f3a30934a893",
-  measurementId: "G-8T152ZN88P"
-};
+// Import our firebase config
+import { firebaseConfig } from './config.js';
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
