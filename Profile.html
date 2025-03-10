@@ -32,8 +32,8 @@
                                     <img id="profile-picture" src="https://bootdey.com/img/Content/avatar/avatar1.png" 
                                          alt="Profile Picture" class="mb-3">
                                 </div>
-                                <h4 class="mb-1">Jimmy Turner</h4>
-                                <p class="text-muted mb-3">Web Developer</p>
+                                <h4 id="user-name" class="mb-1">Loading...</h4>
+                                <p id="user-bio-short" class="text-muted mb-3"></p>
                             </div>
 
                             <!-- Contact Information -->
@@ -43,7 +43,7 @@
                                         <i class="bi bi-calendar3 text-primary"></i>
                                         <div>
                                             <small class="text-muted d-block">Joined</small>
-                                            <span>Jan 20, 1989</span>
+                                            <span id="join-date">Loading...</span>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                         <i class="bi bi-geo-alt text-primary"></i>
                                         <div>
                                             <small class="text-muted d-block">Location</small>
-                                            <span>New York, USA</span>
+                                            <span id="user-location">Loading...</span>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                         <i class="bi bi-envelope text-primary"></i>
                                         <div>
                                             <small class="text-muted d-block">Email</small>
-                                            <a href="mailto:Jimmy@gmail.com" class="text-decoration-none">Jimmy@gmail.com</a>
+                                            <a id="user-email" href="mailto:" class="text-decoration-none">Loading...</a>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                         <i class="bi bi-telephone text-primary"></i>
                                         <div>
                                             <small class="text-muted d-block">Phone</small>
-                                            <span>+1 (530) 555-12121</span>
+                                            <span id="user-phone">Loading...</span>
                                         </div>
                                     </div>
                                 </div>
@@ -79,23 +79,23 @@
                             <!-- Bio Section -->
                             <div class="bio-section p-3 mb-4">
                                 <h5 class="mb-3">About Me</h5>
-                                <p class="mb-0">Passionate about keeping up to date in my neighbourhood! Always looking to contribute to community safety and awareness.</p>
+                                <p id="user-bio" class="mb-0">Loading...</p>
                             </div>
 
                             <!-- Social Links -->
                             <div class="text-center">
                                 <h6 class="mb-3">Connect with me</h6>
                                 <div class="social-links">
-                                    <a href="#" class="btn btn-light mx-1" title="Twitter">
+                                    <a id="twitter-link" href="#" class="btn btn-light mx-1" title="Twitter">
                                         <i class="bi bi-twitter"></i>
                                     </a>
-                                    <a href="#" class="btn btn-light mx-1" title="LinkedIn">
+                                    <a id="linkedin-link" href="#" class="btn btn-light mx-1" title="LinkedIn">
                                         <i class="bi bi-linkedin"></i>
                                     </a>
-                                    <a href="#" class="btn btn-light mx-1" title="GitHub">
+                                    <a id="github-link" href="#" class="btn btn-light mx-1" title="GitHub">
                                         <i class="bi bi-github"></i>
                                     </a>
-                                    <a href="#" class="btn btn-light mx-1" title="Instagram">
+                                    <a id="instagram-link" href="#" class="btn btn-light mx-1" title="Instagram">
                                         <i class="bi bi-instagram"></i>
                                     </a>
                                 </div>
@@ -123,6 +123,11 @@
         </a>
     </nav>
 
+    <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Firebase Scripts -->
+    <script type="module" src="./scripts/firebaseAPI_TEAM08.js"></script>
+    <script type="module" src="./scripts/profile-view.js"></script>
 </body>
 </html>

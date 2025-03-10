@@ -3,4 +3,7 @@
 node_modules/
 .vscode/
 .env
-firebaseAPI_TEAM08.js
+profile-view.js
+profile.js
+profile-update.js
+
