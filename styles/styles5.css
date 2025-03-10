@@ -76,3 +76,51 @@ button {
     border-radius: 50%;
     width:105px;
 }
+@media (max-width: 1200px) {
+    .container {
+        font-size: 4em;
+        bottom: 100px;
+        left: 60%;
+    }
+
+    button {
+        width: 90px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        font-size: 3em;
+        bottom: 80px;
+        left: 55%;
+    }
+
+    button {
+        width: 75px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        font-size: 2em;
+        bottom: 60px;
+        left: 50%;
+    }
+
+    button {
+        width: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        font-size: 1.5em;
+        bottom: 40px;
+        left: 45%;
+        transform: translate(-50%, -50%);
+    }
+
+    button {
+        width: 50px;
+    }
+}
