@@ -1,7 +1,22 @@
+# Firebase config
+scripts/config.js
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 *.logs
 node_modules/
-.vscode/
 .env
 profile-view.js
 profile.js
