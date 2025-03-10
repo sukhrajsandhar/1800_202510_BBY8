@@ -1,8 +1,7 @@
 .container {
     width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
     box-sizing: border-box;
+    margin-top: 40px;
 }
 
 .share {
@@ -49,8 +48,8 @@ p {
 
 .link {
     text-align: center;
-    margin-top: 20px;
     width: 20%;
+    height: 20%;
     margin: 0 auto;
 }
 
@@ -64,17 +63,23 @@ p {
     font-size: 15px
 }
 .container {
-    font-size: 5em;
-    position: absolute;
-    bottom: 150px;
-    margin-top: 20px;
-    left: 65%;
-    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+    flex-wrap: wrap; 
 }
 
 button {
+    width: 10vw;
+    height: 90px; 
+    max-width: 80px; 
+    max-height: 80px; 
     border-radius: 50%;
-    width:105px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+    border: none;
 }
 @media (max-width: 1200px) {
     .container {
@@ -119,8 +124,9 @@ button {
         left: 45%;
         transform: translate(-50%, -50%);
     }
+}
 
-    button {
-        width: 50px;
-    }
+button i {
+    font-size: 2vw; 
+    max-font-size: 40px;
 }
