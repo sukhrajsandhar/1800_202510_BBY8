@@ -1,17 +1,17 @@
-// hey there! here's our Firebase setup for the app 🔥
-const firebaseConfig = {
-    apiKey: "AIzaSyDaQqgxo9Y_se5nrwerXbZyBF3h3ZWxKUs",
-    authDomain: "comp1800-bby8.firebaseapp.com",
-    projectId: "comp1800-bby8",
-    storageBucket: "comp1800-bby8.appspot.com",
-    messagingSenderId: "1034785903646",
-    appId: "1:1034785903646:web:e7f78d2422c63555f1c3a9"
-};
+// Import Firebase modules
+import "https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js";
+import "https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js";
+import "https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js";
+import "https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js";
 
-// let's get Firebase up and running
-firebase.initializeApp(firebaseConfig);
+// Import our firebase config
+import { firebaseConfig } from './config.js';
 
-// these are the main Firebase features we'll be using
+// Initialize Firebase
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
 const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
@@ -79,7 +79,7 @@ async function setupUserProfile(user, additionalData = {}) {
 function redirectToMain() {
   console.log("🔄 Redirecting to main.html...");
   setTimeout(() => {
-    window.location.href = "../main.html"; // Redirect after 2 seconds
+    window.location.href = "/main.html"; // Redirect to root-level main.html
   }, 2000); // Redirect after 2 seconds
 }
 
@@ -160,5 +160,5 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// we'll share these with other files that need them
+// Export Firebase instances for use in other modules
 export { auth, db, storage };

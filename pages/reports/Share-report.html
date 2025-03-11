@@ -4,116 +4,86 @@
 
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreetSmart - Share Report</title>
+    <title>Share report</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico" />
-    <link rel="stylesheet" href="../../styles/styles3.css">
-    <link rel="stylesheet" href="../../styles/styles2.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css" rel="stylesheet">
+    <script id="search-js" defer src="https://api.mapbox.com/search-js/v1.0.0-beta.22/web.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="./styles/styles5.css">
+    <link rel="stylesheet" href="./styles/styles2.css">
 </head>
 
 
 
 <body>
-    <div id="scrollable-share" class="scrollable-container-reports">
-        <div class="container py-4">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title text-center mb-4">Share Road Report</h2>
-                            <form id="reportForm">
-                                <!-- Report Title -->
-                                <div class="mb-3">
-                                    <label for="report-title-name" class="form-label">Report Title</label>
-                                    <input type="text" class="form-control" id="report-title-name" required>
-                                </div>
 
-                                <!-- Location -->
-                                <div class="mb-3">
-                                    <label for="location-name" class="form-label">Location</label>
-                                    <input type="text" class="form-control" id="location-name" required>
-                                </div>
-
-                                <!-- Date and Time -->
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label for="report-date" class="form-label">Date</label>
-                                        <input type="date" class="form-control" id="report-date" required>
-                                    </div>
-                                    <div class="col">
-                                        <label for="report-time" class="form-label">Time</label>
-                                        <input type="time" class="form-control" id="report-time" required>
-                                    </div>
-                                </div>
-
-                                <!-- Problem Types -->
-                                <div class="mb-3">
-                                    <label class="form-label d-block">Problem Type</label>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="pothole">
-                                        <label class="form-check-label" for="pothole">Pothole</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="construction">
-                                        <label class="form-check-label" for="construction">Construction</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="accident">
-                                        <label class="form-check-label" for="accident">Accident</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="flooding">
-                                        <label class="form-check-label" for="flooding">Flooding</label>
-                                    </div>
-                                </div>
-
-                                <!-- Problem Summary -->
-                                <div class="mb-3">
-                                    <label for="message-text" class="form-label">Problem Summary</label>
-                                    <textarea class="form-control" id="message-text" rows="3" required></textarea>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Submit Report</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <h1>Share report</h1>
+    <h3>Report Information</h3>
+    <div class="Report-info">
+        <div class="info">
+            <p><i class="bi bi-cone-striped">Construction</i></p>
+        </div>
+        <div class="info2">
+            <p>Construction on E 29th ave and Willingdon Street.</p>
+            <p>Last update: 2/17/2025 5:23pm - Road crews are filling in potholes and making road repairs.</p>
         </div>
     </div>
 
-    <!-- Nav bar -->
+
+    <h6>Share this report with your friends and colleagues.</h6>
+    <p>Copy Link</p>
+    <div class="link">
+        <div class="form">
+            <input type="text" class="form-control" id="link" value="share-report-construction.com">
+        </div>
+    </div>
+
+    <div class="container">
+        <button>
+            <i class="bi bi-discord"></i>
+        </button>
+        <button>
+            <i class="bi bi-instagram"></i>
+        </button>
+        <button>
+            <i class="bi bi-facebook"></i>
+        </button>
+        <button>
+            <i class="bi bi-twitter"></i>
+        </button>
+        <button>
+            <i class="bi bi-snapchat"></i>
+        </button>
+        <button>
+            <i class="bi bi-whatsapp"></i>
+        </button>
+        <button>
+            <i class="bi bi-wifi"></i>
+        </button>
+    </div>
+
     <nav class="bottom-nav">
-        <a href="Reports.html" class="nav-item active">
+        <a href="Reports.html" class="nav-item">
             <i class="bi bi-car-front"></i>
             <span>Reports</span>
         </a>
-        <a href="../main.html" class="nav-item">
-            <i class="bi bi-map"></i>
+        <a href="main.html" class="nxav-item active">
+            <i class="bi bi-map-fill"></i>
             <span>Map</span>
         </a>
-        <a href="../profile/Profile.html" class="nav-item">
-            <i class="bi bi-person-fill"></i>
+        <a href="Profile.html" class="nav-item">
+            <i class="bi bi-person"></i>
             <span>Profile</span>
         </a>
     </nav>
 
-    <!-- Bootstrap Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script type="module" src="../../scripts/firebaseAPI_TEAM08.js"></script>
-    <script type="module" src="../../scripts/report.js"></script>
+    <script src="./scripts/script.js"></script>
+
+
 </body>
 
 

@@ -1,16 +1,16 @@
-// let's get what we need from Firebase
+// Import what we need from Firebase API
 import { auth, db } from './firebaseAPI_TEAM08.js';
 
-// this function helps us save new reports to Firebase
+// Function to create new reports
 async function writeNewReport(reportData) {
     try {
-        // first, make sure someone's logged in
+        // Get current user
         const user = auth.currentUser;
         if (!user) {
-            throw new Error('hey there! looks like you need to log in first 😊');
+            throw new Error('You must be logged in to create a report');
         }
 
-        // add some extra info about who's making the report
+        // Create new report with user information
         const newReport = {
             ...reportData,
             userId: user.uid,
@@ -19,14 +19,14 @@ async function writeNewReport(reportData) {
             status: 'active'
         };
 
-        // save it to Firebase
+        // Add to Firestore with auto-generated ID
         await db.collection("reports").add(newReport);
-        console.log("awesome! your report has been saved ✨");
+        console.log("✅ New report added to Firestore");
         
-        // let them know it worked
-        showMessage('Thanks for your report! Redirecting you now...', 'success');
+        // Show success message
+        showMessage('Report submitted successfully!', 'success');
         
-        // close the form and head to the reports page
+        // Close modal and redirect to reports page after short delay
         const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
         modal.hide();
         setTimeout(() => {
@@ -34,14 +34,14 @@ async function writeNewReport(reportData) {
         }, 1500);
 
     } catch (error) {
-        console.error("oops, something went wrong:", error);
+        console.error("❌ Error creating new report:", error);
         showMessage(error.message, 'danger');
     }
 }
 
-// shows a nice message to let users know what's happening
+// Function to show messages to the user
 function showMessage(message, type = 'info') {
-    // create a spot for our message if it doesn't exist
+    // Create message div if it doesn't exist
     let messageDiv = document.getElementById('reportMessage');
     if (!messageDiv) {
         messageDiv = document.createElement('div');
@@ -57,19 +57,19 @@ function showMessage(message, type = 'info') {
     messageDiv.textContent = message;
     messageDiv.style.display = 'block';
 
-    // make the message disappear after a bit
+    // Hide message after 3 seconds
     setTimeout(() => {
         messageDiv.style.display = 'none';
     }, 3000);
 }
 
-// gets all the checked problem types from the form
+// Function to get selected checkbox values
 function getSelectedProblemTypes() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     return Array.from(checkboxes).map(cb => cb.id);
 }
 
-// sets today's date as the default
+// Set today's date as the default value for the date input
 function setDefaultDate() {
     const dateInput = document.getElementById('report-date');
     if (dateInput) {
@@ -81,27 +81,28 @@ function setDefaultDate() {
     }
 }
 
-// when the page loads, let's set everything up
+// Event Listener for form submission
 document.addEventListener("DOMContentLoaded", function () {
-    // make sure someone's logged in
+    // Check if user is logged in
     auth.onAuthStateChanged((user) => {
         if (!user) {
-            console.log("hey friend! you'll need to log in first 👋");
+            console.log("❌ No user logged in");
+            // Redirect to login if not logged in
             window.location.href = 'login-signup-page/login.html';
             return;
         }
     });
 
-    // set today's date in the form
+    // Set default date
     setDefaultDate();
 
-    // handle the form submission
+    // Handle form submission
     const reportForm = document.getElementById('reportForm');
     if (reportForm) {
         reportForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            // grab all the info from the form
+            // Get form values
             const title = document.getElementById("report-title-name").value;
             const location = document.getElementById("location-name").value;
             const date = document.getElementById("report-date").value;
@@ -109,13 +110,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const problemTypes = getSelectedProblemTypes();
             const problemSummary = document.getElementById("message-text").value;
 
-            // make sure everything's filled out
+            // Validate form
             if (!title || !location || !date || !time || problemTypes.length === 0 || !problemSummary) {
-                showMessage('could you fill in all the fields? we need the details to help! 🙂', 'warning');
+                showMessage('Please fill in all required fields', 'warning');
                 return;
             }
 
-            // package up all the report info
+            // Create report data object
             const reportData = {
                 title,
                 location,
@@ -125,15 +126,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 problemSummary
             };
 
-            // send it off to Firebase
+            // Submit report
             await writeNewReport(reportData);
         });
     } else {
-        console.warn("hmm, can't find the report form 🤔");
+        console.warn("⚠️ Report form not found");
     }
 });
 
-// make these functions available to other files
+// Export functions for use in other files
 export { writeNewReport };
 
 

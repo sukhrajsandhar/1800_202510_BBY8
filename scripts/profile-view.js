@@ -110,7 +110,7 @@ async function handleSignOut() {
         await auth.signOut();
         console.log("Signed out successfully");
         localStorage.removeItem('loggedInUserId'); // Clear stored user ID
-        window.location.href = 'login-signup-page/login.html';
+        window.location.href = '../../pages/auth/login.html';
     } catch (error) {
         console.error('Error signing out:', error);
         alert('Error signing out. Please try again.');
@@ -163,7 +163,7 @@ auth.onAuthStateChanged(async (user) => {
         }
     } else {
         console.log("No user logged in, redirecting to login page");
-        window.location.href = 'login-signup-page/login.html';
+        window.location.href = '../../pages/auth/login.html';
     }
 });
 

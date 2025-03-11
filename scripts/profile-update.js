@@ -1,14 +1,13 @@
-// let's get what we need from Firebase
+// grab what we need from firebase
 import { auth, db } from './firebaseAPI_TEAM08.js';
 
-// shows friendly messages to keep you in the loop
+// shows feedback messages to the user
 function showMessage(message, type = 'info') {
     const messageDiv = document.getElementById('updateMessage');
     messageDiv.className = `alert alert-${type} mt-3`;
     messageDiv.style.display = 'block';
     messageDiv.textContent = message;
     
-    // if everything went well, let's head back to your profile
     if (type === 'success') {
         setTimeout(() => {
             window.location.href = 'Profile.html';
@@ -16,14 +15,14 @@ function showMessage(message, type = 'info') {
     }
 }
 
-// gets your existing info and puts it in the form
+// fills the form with user's existing data
 async function loadUserData(user) {
     try {
         const doc = await db.collection('users').doc(user.uid).get();
         const userData = doc.data();
 
         if (userData) {
-            // fill in your basic info
+            // Basic info
             document.getElementById('firstName').value = userData.firstName || '';
             document.getElementById('lastName').value = userData.lastName || '';
             document.getElementById('email').value = userData.email || user.email;
@@ -32,68 +31,67 @@ async function loadUserData(user) {
             document.getElementById('phone').value = userData.phone || '';
             document.getElementById('location').value = userData.location || '';
             
-            // pop in your social media links
+            // Social media links
             document.getElementById('twitter').value = userData.social?.twitter || '';
             document.getElementById('linkedin').value = userData.social?.linkedin || '';
             document.getElementById('github').value = userData.social?.github || '';
             document.getElementById('instagram').value = userData.social?.instagram || '';
 
-            // show your profile picture
+            // Profile picture
             const profilePicture = document.getElementById('profile-picture');
             if (profilePicture) {
                 profilePicture.src = userData.photoURL || 'https://bootdey.com/img/Content/avatar/avatar1.png';
             }
         }
     } catch (error) {
-        console.error('oops, had trouble loading your data:', error);
-        showMessage('hmm, something went wrong loading your profile. mind refreshing the page? 🔄', 'danger');
+        console.error('Error loading user data:', error);
+        showMessage('Failed to load profile data. Please refresh the page.', 'danger');
     }
 }
 
-// handles your new profile picture
+// handles uploading a new profile picture
 async function handleProfilePictureUpload(file) {
     const user = auth.currentUser;
     
     if (!file || !user) {
-        throw new Error('looks like we need a file and you to be logged in! 📸');
+        throw new Error('No file selected or user not logged in');
     }
 
     try {
-        // give your picture a unique name
+        // Create a unique filename
         const timestamp = new Date().getTime();
         const fileExtension = file.name.split('.').pop();
         const fileName = `${user.uid}_${timestamp}.${fileExtension}`;
 
-        // find a cozy spot for your picture in Firebase
+        // Create a reference to the file location
         const storageRef = firebase.storage().ref(`profile-pictures/${fileName}`);
 
-        // upload your new pic
+        // Upload the file
         const uploadTask = await storageRef.put(file);
 
-        // get the link to your picture
+        // Get the download URL
         const photoURL = await uploadTask.ref.getDownloadURL();
 
-        // update your profile with the new pic
+        // Update user profile
         await user.updateProfile({ photoURL });
 
         return photoURL;
     } catch (error) {
-        console.error('uh oh, trouble with your picture:', error);
+        console.error('Error uploading profile picture:', error);
         throw error;
     }
 }
 
-// saves all your profile changes
+// saves all profile changes
 async function updateProfile(event) {
     event.preventDefault();
     const user = auth.currentUser;
     if (!user) {
-        showMessage('hey there! mind logging in first? 👋', 'danger');
+        showMessage('Please log in to update your profile.', 'danger');
         return;
     }
 
     try {
-        // package up all your new info
         const updateData = {
             firstName: document.getElementById('firstName').value,
             lastName: document.getElementById('lastName').value,
@@ -111,7 +109,7 @@ async function updateProfile(event) {
             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
         };
 
-        // handle your new profile picture if you added one
+        // Handle profile picture upload
         const fileInput = document.getElementById('profile-upload');
         if (fileInput && fileInput.files.length > 0) {
             try {
@@ -120,27 +118,27 @@ async function updateProfile(event) {
                     updateData.photoURL = photoURL;
                 }
             } catch (uploadError) {
-                showMessage('oops! had some trouble with your picture: ' + uploadError.message + ' 🖼️', 'danger');
+                showMessage('Failed to upload profile picture: ' + uploadError.message, 'danger');
                 return;
             }
         }
 
-        // update your email if it changed
+        // Update email if changed
         if (updateData.email !== user.email) {
             await user.updateEmail(updateData.email);
         }
 
-        // handle password changes if you want to update it
+        // Handle password change
         const newPassword = document.getElementById('newPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
         const currentPassword = document.getElementById('currentPassword').value;
 
         if (newPassword || confirmPassword || currentPassword) {
             if (newPassword !== confirmPassword) {
-                throw new Error("looks like your new passwords don't match! 🔑");
+                throw new Error("New passwords don't match");
             }
             if (!currentPassword) {
-                throw new Error("we need your current password to make this change 🔒");
+                throw new Error("Current password is required to change password");
             }
 
             const credential = firebase.auth.EmailAuthProvider.credential(
@@ -154,23 +152,23 @@ async function updateProfile(event) {
             }
         }
 
-        // save everything to Firebase
+        // Save to Firestore
         await db.collection('users').doc(user.uid).update(updateData);
-        showMessage('awesome! your profile is all updated! ✨', 'success');
+        showMessage('Profile updated! Redirecting...', 'success');
 
     } catch (error) {
-        console.error('uh oh, something went wrong:', error);
-        showMessage(error.message || 'hmm, had some trouble updating your profile 😕', 'danger');
+        console.error('Error updating profile:', error);
+        showMessage(error.message || 'Error updating profile', 'danger');
     }
 }
 
-// let's get everything set up when the page loads
+// Set up event listeners when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     auth.onAuthStateChanged((user) => {
         if (user) {
             loadUserData(user);
             
-            // set up the preview for your new profile picture
+            // Set up profile picture preview
             const profileUpload = document.getElementById('profile-upload');
             if (profileUpload) {
                 profileUpload.addEventListener('change', (e) => {
@@ -188,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // handle when you submit your changes
+            // Set up form submission
             const profileForm = document.getElementById('profile-form');
             if (profileForm) {
                 profileForm.addEventListener('submit', updateProfile);
