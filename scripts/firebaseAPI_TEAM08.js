@@ -1,17 +1,17 @@
-// Import Firebase modules
-import "https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js";
-import "https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js";
-import "https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js";
-import "https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js";
+// hey there! here's our Firebase setup for the app 🔥
+const firebaseConfig = {
+    apiKey: "AIzaSyDaQqgxo9Y_se5nrwerXbZyBF3h3ZWxKUs",
+    authDomain: "comp1800-bby8.firebaseapp.com",
+    projectId: "comp1800-bby8",
+    storageBucket: "comp1800-bby8.appspot.com",
+    messagingSenderId: "1034785903646",
+    appId: "1:1034785903646:web:e7f78d2422c63555f1c3a9"
+};
 
-// Import our firebase config
-import { firebaseConfig } from './config.js';
+// let's get Firebase up and running
+firebase.initializeApp(firebaseConfig);
 
-// Initialize Firebase
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-}
-
+// these are the main Firebase features we'll be using
 const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
@@ -160,5 +160,5 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Export Firebase instances for use in other modules
+// we'll share these with other files that need them
 export { auth, db, storage };
