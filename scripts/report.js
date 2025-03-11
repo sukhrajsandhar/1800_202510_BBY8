@@ -30,7 +30,7 @@ async function writeNewReport(reportData) {
         const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
         modal.hide();
         setTimeout(() => {
-            window.location.href = 'Reports.html';
+            window.location.href = '/pages/reports/Reports.html';
         }, 1500);
 
     } catch (error) {
