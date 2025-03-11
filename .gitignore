@@ -18,7 +18,4 @@ Thumbs.db
 *.logs
 node_modules/
 .env
-profile-view.js
-profile.js
-profile-update.js
 

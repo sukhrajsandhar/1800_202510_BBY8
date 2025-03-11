@@ -2,14 +2,19 @@
 import "https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js";
 import "https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js";
 import "https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js";
+import "https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js";
 
 // Import our firebase config
 import { firebaseConfig } from './config.js';
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
 const auth = firebase.auth();
 const db = firebase.firestore();
+const storage = firebase.storage();
 
 console.log("✅ Firebase initialized successfully");
 
@@ -156,4 +161,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Export Firebase instances for use in other modules
-export { auth, db };
+export { auth, db, storage };
