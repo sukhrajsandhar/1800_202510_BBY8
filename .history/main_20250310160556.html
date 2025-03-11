@@ -35,9 +35,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="start"><h6><b>Date:</b></h6></label>
-                            <input type="date" id="report-date" new-report-start" value="yyyy-mm-dd" min="2025-01-01" max="2025-12-31" />
+                            <input type="date" name="new-report-start" value="yyyy-mm-dd" min="2025-01-01" max="2025-12-31" />
                             <label for="time-problem"><h6><b>Time:</b></h6></label>
-                            <input type="time" id="report-time" name="time-new-report-form" min="00:00" max="23:59" required />
+                            <input type="time" id="time" name="time-new-report-form" min="00:00" max="23:59" required />
                         </div>
                         <div>
                             <fieldset>
@@ -117,11 +117,7 @@
     </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="scripts.js"></script>  -->
+    <script src="scripts.js"></script> 
     <script src="./scripts/report.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
 </body>
 </html>

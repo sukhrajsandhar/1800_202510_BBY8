@@ -1,8 +1,3 @@
-// Import Firebase modules
-import "https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js";
-import "https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js";
-import "https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js";
-import "https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js";
 
 // Import our firebase config
 import { firebaseConfig } from './config.js';
@@ -10,6 +5,8 @@ import { firebaseConfig } from './config.js';
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+
+
 
 
 // Function to create new reports
@@ -33,12 +30,38 @@ async function writeNewReport (reports) {
         }).catch(function(error) {
             console.log("Error adding new report");
         });
-    } catch (error) {
-        console.error("Error uploading new Report form.", error);
-        alert("Failed to upload New Report Form. Please try again.");
     }
 
-// Event Listener after Submit Button is clicked
+
+
+
+//     db.collection("reports").doc(reports.uid).set({
+//         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+//         location: " ",
+//         problemSummary: " ",
+//         roadProblemType: " ",
+//         date: " ",
+//         time: " ",
+//         title: " ",
+//     }).then(function () {
+//         console.log("New report added to firestore");
+//         window.location.assign("main.html");
+//     }).catch(function (error){
+//         console.log("Error adding new report");
+//     });
+// }
+
+// // Function to redirect after successful authentication
+// function redirectToMain() {
+//     console.log("🔄 Redirecting to main.html...");
+//     setTimeout(() => {
+//     window.location.href = "../main.html"; // Redirect after 2 seconds
+//     }, 2000); // Redirect after 2 seconds
+// }
+
+
+
+// Ensure event listeners are added only after the DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
     // Submit Report
     const submitReportButton = document.getElementById("submitReport");
@@ -53,8 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const roadProblemType = document.getElementById().value;
             const problemSummary = document.getElementById("message-text").value;
             
-            console.log(title, location);
-
             await writeNewReport();
             redirectToMain();
         })
@@ -63,11 +84,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 })
 }
-
-
-
-
-
-
-
-
