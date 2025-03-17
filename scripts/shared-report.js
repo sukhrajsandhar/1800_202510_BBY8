@@ -17,18 +17,6 @@ async function initializeFirebase() {
                 return;
             }
 
-            // Initialize Firebase if not already done
-            if (!firebase.apps.length) {
-                firebase.initializeApp({
-                    apiKey: "AIzaSyDaJ6M2CJw_ZACReF_UGK4HHWKl0QoGQBo",
-                    authDomain: "comp1800-bby8.firebaseapp.com",
-                    projectId: "comp1800-bby8",
-                    storageBucket: "comp1800-bby8.appspot.com",
-                    messagingSenderId: "1016915772910",
-                    appId: "1:1016915772910:web:8c3e3d8c6a2c2a0c"
-                });
-            }
-
             // Wait for auth to be ready
             const unsubscribe = auth.onAuthStateChanged(() => {
                 unsubscribe();
