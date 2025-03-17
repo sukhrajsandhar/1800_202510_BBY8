@@ -30,13 +30,20 @@
                                 <!-- Profile Picture -->
                                 <div class="text-center mb-4">
                                     <div class="position-relative d-inline-block">
-                                        <img id="profile-picture" src="https://bootdey.com/img/Content/avatar/avatar1.png" 
-                                             alt="Profile Picture" class="mb-3">
-                                        <label for="profile-upload" class="btn btn-sm btn-primary position-absolute bottom-0 end-0">
-                                            <i class="bi bi-camera"></i>
+                                        <img id="profile-picture" src="../../images/default-avatar.png" 
+                                             alt="Profile Picture" class="rounded-circle mb-3"
+                                             style="width: 150px; height: 150px; object-fit: cover; border: 3px solid #e9ecef; cursor: pointer;">
+                                        <div id="profile-loading" class="position-absolute top-50 start-50 translate-middle" style="display: none;">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
+                                        <label for="profile-upload" class="btn btn-sm btn-primary position-absolute bottom-0 end-0 rounded-circle">
+                                            <i class="bi bi-camera-fill"></i>
                                         </label>
                                         <input type="file" id="profile-upload" class="d-none" accept="image/*">
                                     </div>
+                                    <small class="text-muted d-block">Click to change profile picture</small>
                                 </div>
 
                                 <!-- Personal Information -->

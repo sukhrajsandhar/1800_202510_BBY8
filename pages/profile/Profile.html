@@ -34,8 +34,14 @@
                             <!-- Profile Picture and Name -->
                             <div class="text-center mb-4">
                                 <div class="position-relative d-inline-block">
-                                    <img id="profile-picture" src="https://bootdey.com/img/Content/avatar/avatar1.png" 
-                                         alt="Profile Picture" class="mb-3">
+                                    <img id="profile-picture" src="../../images/default-avatar.png" 
+                                         alt="Profile Picture" class="rounded-circle mb-3" 
+                                         style="width: 150px; height: 150px; object-fit: cover; border: 3px solid #e9ecef;">
+                                    <div id="profile-loading" class="position-absolute top-50 start-50 translate-middle" style="display: none;">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <h4 id="user-name" class="mb-1">Loading...</h4>
                                 <p id="user-bio-short" class="text-muted mb-3"></p>

@@ -40,8 +40,22 @@ function updateProfileInfo(user, userData) {
     
     // profile picture
     const profilePic = document.getElementById('profile-picture');
+    const loadingIndicator = document.getElementById('profile-loading');
+    
     if (profilePic) {
-        profilePic.src = userData.photoURL || 'https://bootdey.com/img/Content/avatar/avatar1.png';
+        if (loadingIndicator) loadingIndicator.style.display = 'block';
+        
+        // Create a new image object to preload
+        const img = new Image();
+        img.onload = function() {
+            profilePic.src = this.src;
+            if (loadingIndicator) loadingIndicator.style.display = 'none';
+        };
+        img.onerror = function() {
+            profilePic.src = '../../images/default-avatar.svg';
+            if (loadingIndicator) loadingIndicator.style.display = 'none';
+        };
+        img.src = userData.photoURL || '../../images/default-avatar.svg';
     }
 
     // name and bio

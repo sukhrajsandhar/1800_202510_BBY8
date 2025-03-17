@@ -37,10 +37,14 @@ async function loadUserData(user) {
             document.getElementById('github').value = userData.social?.github || '';
             document.getElementById('instagram').value = userData.social?.instagram || '';
 
-            // Profile picture
+            // Profile picture - use display image from Firestore
             const profilePicture = document.getElementById('profile-picture');
             if (profilePicture) {
-                profilePicture.src = userData.photoURL || 'https://bootdey.com/img/Content/avatar/avatar1.png';
+                // Always use Firestore's photoURL if available
+                profilePicture.src = userData.photoURL || '../../images/default-avatar.svg';
+                profilePicture.onerror = () => {
+                    profilePicture.src = 'https://bootdey.com/img/Content/avatar/avatar1.png';
+                };
             }
         }
     } catch (error) {
@@ -52,33 +56,93 @@ async function loadUserData(user) {
 // handles uploading a new profile picture
 async function handleProfilePictureUpload(file) {
     const user = auth.currentUser;
+    const loadingIndicator = document.getElementById('profile-loading');
     
     if (!file || !user) {
         throw new Error('No file selected or user not logged in');
     }
 
     try {
-        // Create a unique filename
-        const timestamp = new Date().getTime();
-        const fileExtension = file.name.split('.').pop();
-        const fileName = `${user.uid}_${timestamp}.${fileExtension}`;
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+            throw new Error('Please select an image file');
+        }
 
-        // Create a reference to the file location
-        const storageRef = firebase.storage().ref(`profile-pictures/${fileName}`);
+        // Validate file size (max 5MB for initial upload)
+        const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+        if (file.size > maxSize) {
+            throw new Error('Image size should be less than 5MB');
+        }
 
-        // Upload the file
-        const uploadTask = await storageRef.put(file);
+        // Show loading indicator
+        if (loadingIndicator) {
+            loadingIndicator.style.display = 'block';
+        }
 
-        // Get the download URL
-        const photoURL = await uploadTask.ref.getDownloadURL();
+        // Function to compress image
+        const compressImage = (imgFile, maxWidth, maxHeight, quality) => {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(imgFile);
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
 
-        // Update user profile
-        await user.updateProfile({ photoURL });
+                        // Calculate new dimensions
+                        if (width > height) {
+                            if (width > maxWidth) {
+                                height = Math.round((height * maxWidth) / width);
+                                width = maxWidth;
+                            }
+                        } else {
+                            if (height > maxHeight) {
+                                width = Math.round((width * maxHeight) / height);
+                                height = maxHeight;
+                            }
+                        }
 
-        return photoURL;
+                        canvas.width = width;
+                        canvas.height = height;
+
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Get compressed image as base64
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+                        resolve(compressedBase64);
+                    };
+                };
+            });
+        };
+
+        // Create compressed display image
+        const displayImage = await compressImage(file, 400, 400, 0.7);
+
+        // Use a default avatar URL for auth profile
+        const defaultAvatarUrl = 'https://bootdey.com/img/Content/avatar/avatar1.png';
+
+        // Update user profile with default URL and Firestore with display image
+        await Promise.all([
+            user.updateProfile({ photoURL: defaultAvatarUrl }),
+            db.collection('users').doc(user.uid).update({
+                photoURL: displayImage,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+        ]);
+
+        return displayImage;
     } catch (error) {
-        console.error('Error uploading profile picture:', error);
+        console.error('Error handling profile picture:', error);
         throw error;
+    } finally {
+        // Hide loading indicator
+        if (loadingIndicator) {
+            loadingIndicator.style.display = 'none';
+        }
     }
 }
 
@@ -108,20 +172,6 @@ async function updateProfile(event) {
             },
             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
         };
-
-        // Handle profile picture upload
-        const fileInput = document.getElementById('profile-upload');
-        if (fileInput && fileInput.files.length > 0) {
-            try {
-                const photoURL = await handleProfilePictureUpload(fileInput.files[0]);
-                if (photoURL) {
-                    updateData.photoURL = photoURL;
-                }
-            } catch (uploadError) {
-                showMessage('Failed to upload profile picture: ' + uploadError.message, 'danger');
-                return;
-            }
-        }
 
         // Update email if changed
         if (updateData.email !== user.email) {
@@ -168,20 +218,46 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user) {
             loadUserData(user);
             
-            // Set up profile picture preview
+            // Set up profile picture preview and upload
             const profileUpload = document.getElementById('profile-upload');
-            if (profileUpload) {
-                profileUpload.addEventListener('change', (e) => {
+            const profilePicture = document.getElementById('profile-picture');
+            let isUploading = false;
+            
+            if (profileUpload && profilePicture) {
+                // Make the profile picture clickable to trigger file upload
+                profilePicture.addEventListener('click', () => {
+                    if (!isUploading) {
+                        profileUpload.click();
+                    }
+                });
+
+                profileUpload.addEventListener('change', async (e) => {
                     const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            const profilePicture = document.getElementById('profile-picture');
-                            if (profilePicture) {
+                    if (file && !isUploading) {
+                        isUploading = true;
+                        try {
+                            // Show preview immediately
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
                                 profilePicture.src = e.target.result;
-                            }
-                        };
-                        reader.readAsDataURL(file);
+                            };
+                            reader.readAsDataURL(file);
+
+                            // Handle the upload
+                            const photoURL = await handleProfilePictureUpload(file);
+                            showMessage('Profile picture updated successfully!', 'success');
+                            
+                            // Update the preview with the actual uploaded URL
+                            profilePicture.src = photoURL;
+                        } catch (error) {
+                            showMessage(error.message || 'Error uploading profile picture', 'danger');
+                            // Revert to previous image if upload fails
+                            loadUserData(user);
+                        } finally {
+                            isUploading = false;
+                            // Clear the file input
+                            profileUpload.value = '';
+                        }
                     }
                 });
             }
