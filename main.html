@@ -141,6 +141,9 @@
             document.addEventListener('reportAdded', () => {
                 loadReportMarkers(map);
             });
+
+            // Add compass control to the map
+            map.addControl(new mapboxgl.NavigationControl({ showCompass: true }), 'top-right');
         </script>
         
     </div>
