@@ -166,7 +166,7 @@ function setupShareButtons(report) {
         window.open(discordUrl, '_blank');
     });
 
-    // Instagram share (copy to clipboard)
+    // Instagram share (copy to clipboard) -- No redirect.
     document.querySelector('.share-instagram').addEventListener('click', async (e) => {
         await copyToClipboard(shareUrl);
         const button = e.currentTarget;
