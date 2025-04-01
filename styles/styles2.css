@@ -592,3 +592,22 @@ html {
 .modal-backdrop {
     z-index: 1049;
 }
+
+@media (max-height:938px) {
+  .mapboxgl-ctrl-top-right {
+    float: right;
+    margin: 713px 1px 0 0;
+}
+}
+@media (max-height:920px) {
+  .mapboxgl-ctrl-top-right {
+    float: right;
+    margin: 705px 1px 0 0;
+}
+}
+@media (max-width:613px) {
+  .mapboxgl-ctrl-top-right {
+    float: right;
+    margin: 705px 1px 0 0;
+}
+}
