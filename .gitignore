@@ -18,4 +18,5 @@ Thumbs.db
 *.logs
 node_modules/
 .env
-
+firebase.json
+.firebase/hosting..cache
