@@ -56,6 +56,7 @@ API: MapBox API (live maps, location tracking)
 
 ## Project Structure
 
+```
 1800_202510_BBY8/
 ├── .firebase/
 │   └── hosting..cache
@@ -113,7 +114,7 @@ API: MapBox API (live maps, location tracking)
 ├── package-lock.json
 ├── package.json
 └── README.md
-
+```
 
 ---
 
