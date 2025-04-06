@@ -137,9 +137,9 @@ Team Members:
 ## Acknowledgments
 
 Example:
-- Weather data sourced from [OpenWeatherMap](https://openweathermap.org/).
-- Code snippets for ___ algoirthm were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- Pages designed with [Bootstrap](https://getbootstrap.com/).
+- Icons sourced from [Google](https://fonts.google.com/icons).
+- Interactive Map provided by [Mapbox](https://www.mapbox.com/).
 
 ---
 
