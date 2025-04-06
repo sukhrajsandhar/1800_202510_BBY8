@@ -56,18 +56,64 @@ API: MapBox API (live maps, location tracking)
 
 ## Project Structure
 
-Example:
-```
-project-name/
-├── src/
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   └── components/
+1800_202510_BBY8/
+├── .firebase/
+│   └── hosting..cache
+├── .history/
+├── images/
+├── node_modules/
+│   └── (various packages and dependencies)
+├── pages/
+│   ├── auth/
+│   │   ├── css/
+│   │   │   ├── bootstrap/
+│   │   │   ├── bootstrap.min.css
+│   │   │   └── style.css
+│   │   ├── fonts/
+│   │   ├── images/
+│   │   ├── js/
+│   │   ├── scss/
+│   │   ├── login.html
+│   │   └── signup.html
+│   ├── profile/
+│   │   ├── Profile.html
+│   │   └── update-profile.html
+│   └── reports/
+│       ├── Reports.html
+│       ├── Share-report.html
+│       ├── shared-report.html
+│       └── view-report.html
+├── scripts/
+│   ├── config.js
+│   ├── firebaseAPI_TEAM08.js
+│   ├── location-autofill.js
+│   ├── map-markers.js
+│   ├── profile-update.js
+│   ├── profile-view.js
+│   ├── profile.js
+│   ├── report.js
+│   ├── Reports.js
+│   ├── shared-report.js
+│   └── view-report.js
+├── styles/
+│   ├── styles2.css
+│   ├── styles3.css
+│   ├── styles4.css
+│   └── styles5.css
+├── .env
+├── .firebaserc
+├── .gitignore
+├── 404.html
+├── cors.json
+├── firebase.json
+├── firestore.indexes.json
+├── firestore.rules
+├── index.html
+├── main.html
+├── package-lock.json
 ├── package.json
-├── README.md
-└── .gitignore
-```
+└── README.md
+
 
 ---
 
@@ -123,5 +169,4 @@ Plan for Growth: Upgrade hosting and infrastructure to scale with user base.
 
 ## License
 
-Example:
 This project is licensed under the MIT License. See the LICENSE file for details.
