@@ -1,5 +1,5 @@
 
-# Street Smart
+# StreetSmart
 
 ## Overview
 
