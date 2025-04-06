@@ -29,11 +29,15 @@ Profile Customization: Includes features like profile picture updates and report
 
 ## Technologies Used
 
-Frontend: HTML5, CSS, Bootstrap, JavaScript.
-Design: Figma (UI/UX prototyping).
-Backend: Firebase (authentication, database).
-Project Management: Trello (task tracking), Discord (team communication).
-API: MapBox API (live maps, location tracking).
+Frontend: HTML5, CSS, Bootstrap, JavaScript
+
+Design: Figma (UI/UX prototyping)
+
+Backend: Firebase (authentication, database)
+
+Project Management: Trello (task tracking), Discord (team communication)
+
+API: MapBox API (live maps, location tracking)
 
 ---
 
