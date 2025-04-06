@@ -100,16 +100,23 @@ Example:
 ### Limitations
 
 Incomplete Features: Editable and updatable Reports currently not supported.
+
 Limited Social Sharing: Only X integration is currently available.
+
 Web-Only App: Not yet available as a native mobile app.
+
 Scalability Concerns: Free-tier tools may not support long-term growth.
 
 ### Future Work
 
 Complete Key Features: Finalize dark mode, navigation, filtering, and safety resources.
+
 Expand Social Integration: Add support for more platforms beyond X.
+
 Enhance UX: Add route history, and bookmarking.
+
 Improve Moderation: Implement tools to verify or filter reports.
+
 Plan for Growth: Upgrade hosting and infrastructure to scale with user base.
 
 ---
